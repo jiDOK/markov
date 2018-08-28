@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class NamesTester : MonoBehaviour
 {
+    // comma-seperated names in one entry are ok too
     public string[] names;
     public int order;
     public int minLenght;
