@@ -1,2 +1,2 @@
-Herrmann, Karl, Heiko, Arne, Joachim, Ottmar, Benjamin, Ulf, Heino, Marius, Robert, Frank, Ralf, Mecki, Brutus, Fred
-Philip, Günther, Einar, Werner, Karl, Gustav, Klauspeter, Arno, Wolfgang, Horst, Medardus, Murr, Rudolph, Christian
+Herrmann, Karl, Heiko, Arne, Joachim, Ottmar, Benjamin, Ulf, Heino, Marius, Robert, Frank, Ralf, Mecki, Brutus, Fred,
+Heinrich, Anton, Karl, Gustav, Lars
