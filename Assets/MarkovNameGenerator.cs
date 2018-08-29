@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class MarkovNameGenerator
 {
-    // chains..
     Dictionary<string, List<char>> chains = new Dictionary<string, List<char>>();
     List<string> samples = new List<string>();
     List<string> used = new List<string>();
@@ -12,16 +11,17 @@ public class MarkovNameGenerator
     int minLength;
 
     // sehr umfangreicher constructor
+    // IEnumerable, damit wir foreach benutzen können
+    // nimmt string[], List<string> etc.
     public MarkovNameGenerator(IEnumerable<string> sampleNames, int order, int minLength)
     {
         // clamp parameters
         if (order < 1) { order = 1; }
         if (minLength < 1) { minLength = 1; }
-
         this.order = order;
         this.minLength = minLength;
 
-        // split lines at comma (foreach works with every IEnumerable, wie z.B:...)
+        // splitting and formatting
         foreach (string line in sampleNames)
         {
             string[] tokens = line.Split(',');
@@ -56,12 +56,12 @@ public class MarkovNameGenerator
             }
         }
     }
-    // get the next random name
+
+    // sehr umfangreicher getter...
     public string NextName
     {
         get
         {
-            //get a random token somewhere in middle of sample word
             string s = "";
             do
             {
@@ -72,7 +72,7 @@ public class MarkovNameGenerator
                 {
                     string token = s.Substring(s.Length - order, order);
                     char c = GetLetter(token);
-                    if (c != '?') { s += GetLetter(token); }
+                    if (c != '?') { s += c; }
                     else { break; }
                 }
 
@@ -83,15 +83,16 @@ public class MarkovNameGenerator
                     for (int t = 0; t < tokens.Length; t++)
                     {
                         if (tokens[t] == "") { continue; }
-                        if (tokens[t].Length == 1) { tokens[t] = tokens[t].ToUpper(); }
+                        // first letter upper case, rest lower case
                         else { tokens[t] = tokens[t].Substring(0, 1) + tokens[t].Substring(1).ToLower(); }
                         if (s != "") { s += " "; }
                         s += tokens[t];
                     }
                 }
+                // first letter upper case, rest lower case
                 else { s = s.Substring(0, 1) + s.Substring(1).ToLower(); }
             }
-            while (used.Contains(s) || s.Length < minLength);
+            while (used.Contains(s) || s.Length < minLength);// wenn die Variation schon existiert, oder zu kurz: weitermachen
             used.Add(s);
             return s;
         }
@@ -106,6 +107,7 @@ public class MarkovNameGenerator
 
     char GetLetter(string token)
     {
+        // falls wir keinen Eintrag haben, können wir keinen zufälligen Nachfolger auslesen
         if (!chains.ContainsKey(token))
         {
             return '?';

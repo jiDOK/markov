@@ -1,16 +1,23 @@
+using System;
+using System.IO;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class NamesTester : MonoBehaviour
 {
-    // comma-seperated names in one entry are ok too
     public string[] names;
+    //public string[] namesFromFile;
+    public List<string> namesFromAsset;
     public int order;
     public int minLenght;
     MarkovNameGenerator generator;
 
     void Start()
     {
-        generator = new MarkovNameGenerator(names, order, minLenght);
+        //namesFromFile = File.ReadAllLines("./Assets/Resources/Names.txt");// funktioniert so nicht im Build
+        TextAsset nameAsset = Resources.Load("Names") as TextAsset;
+        namesFromAsset = new List<string>(nameAsset.text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries));
+        generator = new MarkovNameGenerator(namesFromAsset, order, minLenght);
         for (int i = 0; i < 10; i++)
         {
             var name = generator.NextName;
