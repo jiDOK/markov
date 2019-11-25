@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\jean-louise\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\jean-louise\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_MarkovChains.-1144882013.00" t="ExcludeRecursive" />
+    <e p="G:\01\UnityProjects\Repos\GPB_Doz\MarkovChains" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="MarkovNameGenerator.cs" t="Include" />
+        <e p="NamesTester.cs" t="Include" />
+        <e p="Resources" t="Include">
+          <e p="Names.txt" t="Include" />
+        </e>
+      </e>
+      <e p="MarkovChains.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
